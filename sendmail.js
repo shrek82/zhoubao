@@ -1,35 +1,34 @@
 var nodemailer = require("nodemailer");
+var statrTime = new Date().getTime();
 
 // create reusable transport method (opens pool of SMTP connections)
-var smtpTransport = nodemailer.createTransport("SMTP",{
+var smtpTransport = nodemailer.createTransport("SMTP", {
     host: "mail.zjuhz.com",
     auth: {
-        user: "server@zjuhz.com",
-        pass: "1234567"
+        user: "majun@zjuhz.com",
+        pass: "123456"
     }
 });
 
 // setup e-mail data with unicode symbols
 var mailOptions = {
-    from: "server <server@zjuhz.com>", // sender address
-    to: "37294812@qq.com", // list of receivers
+    from: "majun <majun@zjuhz.com>", // sender address
+    to: "37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com,37294812@qq.com", // list of receivers
     subject: "Hello", // Subject line
     text: "Hello world", // plaintext body
     html: "<b>Hello world</b>" // html body
 }
-
 // send mail with defined transport object
-smtpTransport.sendMail(mailOptions, function(error, response){
-    if(error){
+smtpTransport.sendMail(mailOptions, function(error, response) {
+    if (error) {
         console.log(error);
-    }else{
+    } else {
         console.log("Message sent: " + response.message);
     }
 
-    // if you don't want to use this transport object anymore, uncomment following line
-    //smtpTransport.close(); // shut down the connection pool, no more messages
+
+    //运行结束后关闭进程
+    smtpTransport.close();
 });
 
-var fs = require('fs');
-var file = fs.readFileSync(path, "utf8");
-console.log(file);
+console.log('run time:' + (new Date().getTime() - statrTime) / 1000 + 's');

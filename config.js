@@ -4,7 +4,7 @@ exports.server = {
 	auth: {
 		user: 'majun@zjuhz.com',
 		pass: '123456'
-	};
+	}
 }
 //用户组及对应的名单
 exports.group = {
